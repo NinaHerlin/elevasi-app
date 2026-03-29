@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Base Font & Reset */
+html,
+body,
+[class*="css"] {
+    font-family: 'Inter', sans-serif !important;
+    color: #1e293b !important;
+    font-size: 18px !important;
+    /* Diperbesar */
+}
+
+/* App Background */
+.stApp {
+    background: linear-gradient(135deg, #f0f7ff 0%, #e2e8f0 100%);
+    background-attachment: fixed;
+}
+
+/* Main Container - Glassmorphism Effect */
+.block-container {
+    padding: 3rem !important;
+    /* Padding diperbesar agar proporsional */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    max-width: 900px;
+}
+
+/* Main Title */
+h1 {
+    color: #0f172a !important;
+    text-align: center;
+    font-weight: 800 !important;
+    font-size: 2.8rem !important;
+    /* Diperbesar */
+    margin-bottom: 0.5rem;
+    background: -webkit-linear-gradient(45deg, #1e3a8a, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-bottom: 15px;
+}
+
+/* Subheaders */
+h2,
+h3 {
+    color: #1e3a8a !important;
+    font-weight: 700 !important;
+    font-size: 1.8rem !important;
+    /* Diperbesar */
+    margin-top: 2rem !important;
+    margin-bottom: 1.2rem !important;
+}
+
+/* Typography elements (dibatasi hanya pada .stMarkdown agar tidak merusak tombol/input) */
+.stMarkdown p,
+.stMarkdown li {
+    color: #334155 !important;
+    font-size: 18px !important;
+    /* Diperbesar */
+    line-height: 1.7;
+}
+
+.stMarkdown ul {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-left: 25px;
+}
+
+/* Elegant Divider */
+hr {
+    border: 0;
+    height: 1.5px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(59, 130, 246, 0.3), rgba(0, 0, 0, 0)) !important;
+    margin: 2.5rem 0 !important;
+}
+
+/* Input Labels */
+label {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    /* Diperbesar */
+    margin-bottom: 0.6rem !important;
+}
+
+/* General Inputs (Text, Number) */
+.stTextInput>div>div>input,
+.stNumberInput>div>div>input {
+    background-color: #f8fafc !important;
+    border-radius: 12px;
+    border: 2px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    padding: 0.8rem 1.2rem !important;
+    /* Padding lebih luas */
+    font-size: 18px !important;
+    /* Input teks lebih besar */
+    font-weight: 500 !important;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Input Focus States */
+.stTextInput>div>div>input:focus,
+.stNumberInput>div>div>input:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15) !important;
+    background-color: #ffffff !important;
+}
+
+/* Selectbox Input Area */
+.stSelectbox div[data-baseweb="select"] {
+    background-color: #1e3a8a !important;
+    /* Warna dark blue agar menonjol */
+    border-radius: 12px;
+    border: 2px solid #3b82f6 !important;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.stSelectbox div[data-baseweb="select"]:hover {
+    background-color: #1d4ed8 !important;
+}
+
+/* Selectbox Selected Text (F3B, dll) */
+.stSelectbox div[data-baseweb="select"] span,
+.stSelectbox div[data-baseweb="select"] div {
+    color: #ffffff !important;
+    /* Teks terang/putih di selectbox */
+    font-size: 18px !important;
+    /* Diperbesar */
+    font-weight: 600 !important;
+}
+
+/* Selectbox arrow icon (panah) */
+.stSelectbox div[data-baseweb="select"] svg {
+    fill: #ffffff !important;
+    /* Panah putih agar terlihat */
+}
+
+/* Dropdown list container (Menu yg muncul saat di-klik) */
+div[role="listbox"] {
+    background-color: #1e293b !important;
+    /* Latar belakang gelap */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    padding: 5px !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Dropdown items (F3B, F5R, F7R) di dalam list */
+div[role="listbox"] ul li {
+    font-size: 18px !important;
+    /* Diperbesar */
+    color: #f8fafc !important;
+    /* Teks berwarna terang/putih agar kontras dan mudah dibaca! */
+    font-weight: 500 !important;
+    padding: 12px 15px !important;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+/* Dropdown item hover */
+div[role="listbox"] ul li:hover {
+    background-color: #3b82f6 !important;
+    color: white !important;
+}
+
+/* Primary Action Button */
+.stButton>button,
+[data-testid="stFormSubmitButton"]>button {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    border-radius: 14px;
+    height: 65px;
+    width: 100%;
+    border: none !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35) !important;
+    margin-top: 15px;
+}
+
+/* Teks Tombol */
+.stButton>button p,
+.stButton>button div,
+.stButton>button span,
+[data-testid="stFormSubmitButton"]>button p,
+[data-testid="stFormSubmitButton"]>button div,
+[data-testid="stFormSubmitButton"]>button span {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 20px !important;
+    letter-spacing: 0.5px;
+}
+
+/* Hover: Warna berubah lebih terang saat kursor mendekat */
+.stButton>button:hover,
+[data-testid="stFormSubmitButton"]>button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5) !important;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+    border: none !important;
+    color: #ffffff !important;
+}
+
+/* Focus: Setelah ditekan tapi kursor menjauh (Kembali ke warna semula!) */
+.stButton>button:focus:not(:hover),
+[data-testid="stFormSubmitButton"]>button:focus:not(:hover) {
+    transform: none !important;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35) !important;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    border: none !important;
+    color: #ffffff !important;
+}
+
+/* Active: Saat sedang ditekan click-down */
+.stButton>button:active,
+[data-testid="stFormSubmitButton"]>button:active {
+    transform: translateY(1px) !important;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.3) !important;
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
+    /* Agak sedikit lebih gelap ketika ditekan */
+    border: none !important;
+    color: #ffffff !important;
+}
+
+/* Metric Display Widget */
+[data-testid="stMetric"] {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+    border: 2px solid #e2e8f0;
+    padding: 2.5rem;
+    /* Padding lebih besar */
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+[data-testid="stMetric"]:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-color: #bfdbfe;
+}
+
+/* Metric Label */
+[data-testid="stMetricLabel"] {
+    justify-content: center;
+    font-size: 1.4rem !important;
+    /* Label metrik diperbesar */
+    color: #475569 !important;
+    font-weight: 700 !important;
+    margin-bottom: 15px;
+}
+
+/* Metric Value */
+[data-testid="stMetricValue"] {
+    color: #1e3a8a !important;
+    font-weight: 800 !important;
+    font-size: 4rem !important;
+    /* Nilai prediksi sangat besar */
+}
+
+/* Alerts Content styling */
+[data-testid="stAlert"] {
+    border-radius: 12px;
+    border: none !important;
+    padding: 1.5rem 2rem;
+}
+
+/* Override paragraph inside alert to maintain size and color */
+[data-testid="stAlert"] p {
+    font-size: 18px !important;
+    /* Teks alert diperbesar */
+}
+
+.stAlert-success,
+div[data-testid="stAlert"][data-baseweb="notification"] {
+    background-color: #ecfdf5 !important;
+}
+
+.stAlert-success p,
+div[data-testid="stAlert"][data-baseweb="notification"] p {
+    color: #065f46 !important;
+    font-weight: 600 !important;
+}
+
+.stAlert-error {
+    background-color: #fef2f2 !important;
+}
+
+.stAlert-error p {
+    color: #991b1b !important;
+    font-weight: 600 !important;
+}
+
+/* Spinner adjustment */
+.stSpinner>div>div {
+    border-color: #3b82f6 transparent transparent transparent !important;
+}
+
+.stSpinner p {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #1e3a8a !important;
+}
+
+/* Expander Styling Override */
+[data-testid="stExpander"] {
+    background-color: #f8fafc !important;
+    border-radius: 12px;
+    border: 1px solid #cbd5e1 !important;
+}
+
+[data-testid="stExpander"] summary,
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary span,
+[data-testid="stExpander"] summary div {
+    color: #1e3a8a !important;
+    /* Biru tegas agar bisa langsung terbaca */
+    font-weight: 700 !important;
+    font-size: 18px !important;
+}
+
+[data-testid="stExpander"] svg {
+    color: #1e3a8a !important;
+    fill: #1e3a8a !important;
+}
+
+/* =========================================
+   Mobile Responsiveness Overrides
+   (Untuk layar handphone / max width 768px)
+   ========================================= */
+@media screen and (max-width: 768px) {
+
+    /* Kurangi padding luar biar tidak terpotong atau terlalu sempit di HP */
+    .block-container {
+        padding: 1.5rem 1.2rem !important;
+        margin-top: 1rem !important;
+        border-radius: 12px !important;
+    }
+
+    /* Ukuran Judul diperkecil proporsional untuk layar kecil */
+    h1 {
+        font-size: 2.2rem !important;
+        padding-bottom: 5px !important;
+    }
+
+    h2,
+    h3 {
+        font-size: 1.5rem !important;
+        margin-top: 1rem !important;
+    }
+
+    /* Font umum agak dikecilkan sedikit di HP */
+    html,
+    body,
+    [class*="css"],
+    .stMarkdown p,
+    .stMarkdown li,
+    label {
+        font-size: 16px !important;
+    }
+
+    /* Input box disesuaikan */
+    .stTextInput>div>div>input,
+    .stNumberInput>div>div>input {
+        font-size: 16px !important;
+        padding: 0.6rem 1rem !important;
+    }
+
+    /* Tombol sedikit diperkecil untuk touch friendly tapi tidak over */
+    .stButton>button,
+    [data-testid="stFormSubmitButton"]>button {
+        height: 55px !important;
+        margin-top: 10px !important;
+    }
+
+    .stButton>button p,
+    .stButton>button div,
+    .stButton>button span,
+    [data-testid="stFormSubmitButton"]>button p,
+    [data-testid="stFormSubmitButton"]>button div,
+    [data-testid="stFormSubmitButton"]>button span {
+        font-size: 18px !important;
+    }
+
+    /* Hasil metrik angkanya raksasa di PC, di HP harus diperkecil sedikit agar muat */
+    [data-testid="stMetricValue"] {
+        font-size: 3rem !important;
+    }
+
+    [data-testid="stMetricLabel"] {
+        font-size: 1.2rem !important;
+    }
+
+    [data-testid="stMetric"] {
+        padding: 1.5rem !important;
+        border-radius: 12px !important;
+    }
+}

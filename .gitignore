@@ -1,0 +1,23 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Streamlit / local env
+*.env
+credentials/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
