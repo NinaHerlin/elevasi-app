@@ -80,9 +80,9 @@ with st.form("prediction_form"):
     st.subheader("Input Historis Elevasi Muka Air Pori (Mdpl)")
     col5, col6 = st.columns(2)
     with col5:
-        f1 = st.number_input(f"{selected_model} t-1", value=100.0)
+        f1 = st.number_input(f"Lag t-1", value=100.0)
     with col6:
-        f2 = st.number_input(f"{selected_model} t-2", value=100.0)
+        f2 = st.number_input(f"Lag t-2", value=100.0)
 
     st.markdown("<br>", unsafe_allow_html=True)
     
