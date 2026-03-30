@@ -70,14 +70,14 @@ with st.form("prediction_form"):
     st.divider()
 
     # PILIH MODEL
-    st.subheader("Pilih Titik Prediksi")
+    st.subheader("Pilih Titik Prediksi Piezometer Casagrade")
     selected_model = st.selectbox(
         "", 
         ["F3B", "F5R", "F7R"]
     )
 
     # INPUT DINAMIS
-    st.subheader("Input Historis Elevasi")
+    st.subheader("Input Historis Elevasi Muka Air Pori (Mdpl)")
     col5, col6 = st.columns(2)
     with col5:
         f1 = st.number_input(f"{selected_model} t-1", value=100.0)
