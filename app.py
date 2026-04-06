@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 from utils.sheets import save_to_sheets
 import datetime
+import sklearn
 
 # =========================
 # CONFIG PAGE
@@ -24,12 +25,32 @@ with open('style.css') as f:
 # =========================
 @st.cache_resource(show_spinner="Memuat model Machine Learning...")
 def load_all_models():
-    m_f3b = pickle.load(open('model/robust_f3b.pkl', 'rb'))
-    m_f5r = pickle.load(open('model/robust_f5r.pkl', 'rb'))
-    m_f7r = pickle.load(open('model/robust_f7r.pkl', 'rb'))
-    return m_f3b, m_f5r, m_f7r
+    models = {}
+    model_names = ["F2B", "F2R", "F3B", "F3R", "F5B", "F5R", "F8G", "F11G", "F11N", "F11R"]
+    for name in model_names:
+        with open(f'model/gbr_model_{name}.pkl', 'rb') as f:
+            models[name] = pickle.load(f)
+    return models
 
-model_f3b, model_f5r, model_f7r = load_all_models()
+models_dict = None
+load_error = None
+try:
+    models_dict = load_all_models()
+except Exception as e:
+    load_error = e
+
+if load_error:
+    st.title("⚠️ Gagal Memuat Model")
+    st.error(
+        "Gagal memuat model Machine Learning. Ini biasanya terjadi karena versi scikit-learn saat ini "
+        f"({sklearn.__version__}) berbeda dari versi yang digunakan untuk menyimpan model."
+    )
+    st.markdown(
+        "Silakan gunakan lingkungan Python dan scikit-learn yang sama dengan model, atau buat ulang file model `*.pkl` "
+        "dengan versi yang terpasang saat ini."
+    )
+    st.exception(load_error)
+    st.stop()
 
 # =========================
 # TITLE & PANDUAN
@@ -42,7 +63,7 @@ with st.expander("ℹ️ **Petunjuk Penggunaan** (Klik untuk membuka)"):
     
     **Langkah-langkah:**
     1. Masukkan data real-time **TMA Waduk** dan **Curah Hujan** historis (H-1 hingga H-3).
-    2. Pilih target **Titik Prediksi** (F3B, F5R, atau F7R).
+    2. Pilih target **Titik Prediksi**.
     3. Masukkan data historis elevasi titik tersebut 2 hari ke belakang.
     4. Klik **Prediksi Sekarang** untuk melihat estimasi analisis muka air pori secara cepat.
     """)
@@ -73,7 +94,7 @@ with st.form("prediction_form"):
     st.subheader("Pilih Titik Prediksi Piezometer Casagrade")
     selected_model = st.selectbox(
         "", 
-        ["F3B", "F5R", "F7R"]
+        ["F2B", "F2R", "F3B", "F3R", "F5B", "F5R", "F8G", "F11G", "F11N", "F11R"]
     )
 
     # INPUT DINAMIS
@@ -96,14 +117,10 @@ if submitted:
     try:
         with st.spinner("System sedang menganalisis pola data Anda..."):
             
-            input_data = np.array([[1, tma, rain_1, rain_2, rain_3, f1, f2]])
+            input_data = np.array([[tma, rain_1, rain_2, rain_3, f1, f2]])
 
-            if selected_model == "F3B":
-                prediction = model_f3b.predict(input_data)[0]
-            elif selected_model == "F5R":
-                prediction = model_f5r.predict(input_data)[0]
-            elif selected_model == "F7R":
-                prediction = model_f7r.predict(input_data)[0]
+            if selected_model in models_dict:
+                prediction = models_dict[selected_model].predict(input_data)[0]
 
         # =========================
         # OUTPUT
